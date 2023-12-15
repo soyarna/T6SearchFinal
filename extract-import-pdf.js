@@ -16,11 +16,11 @@ const db = await mysql.createConnection({
   database: 'T6Search'
 });  
 
-const files = await fs.readdirSync('pdfs');
+const files = await fs.readdirSync('./client/pdfs');
 
 for (let file of files) {
 
-  let data = await pdfParse(fs.readFileSync('./pdfs/' + file));
+  let data = await pdfParse(fs.readFileSync('./client/pdfs/' + file));
 
   // create a new object which only contains the parts I'm interested in.
   // there are other parts we don't use:
