@@ -23,9 +23,9 @@ let json = fs.readFileSync('./pp-json-from-csv.json', 'utf-8');
 let data = JSON.parse(json);
 
 
-for (let powerpointMetadata of data) {
+for (let metadata of data) {
   // extract the file name (the property digest + '.ppt)
-  let fileName = powerpointMetadata.digest + '.ppt';
+  let fileName = metadata.digest + '.ppt';
 
   // remove the file name
   // delete powerpointMetadata.digest;
@@ -43,9 +43,9 @@ for (let powerpointMetadata of data) {
 
   // TODO: Do something like this to INSERT the data in our database
   let result = await query(`
-    INSERT INTO mainTable (fileType, fileName, metaData)
+    INSERT INTO mainTable (fileType, fileName, metadata)
     VALUES(?, ?, ?)
-  `, ['.ppt', fileType, fileName, metadata]);
+  `, ['.ppt', fileName, metadata]);
   console.log(result);
 
 }
