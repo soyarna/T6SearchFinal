@@ -19,12 +19,12 @@ async function query(sql, listOfValues) {
 }
 
 
-let pictures = fs.readdirSync('pictures');
+let pictures = fs.readdirSync('client/pictures');
 
 let counter = 0;
 for (let picture of pictures) {
   if (picture.includes('.JPG')) {
-    let metadata = await exifr.parse('pictures/' + picture);
+    let metadata = await exifr.parse('client/pictures/' + picture);
     console.log(counter);
     counter = counter + 1;
     let result = await query(`
