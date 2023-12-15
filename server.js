@@ -96,3 +96,21 @@ AND metadata->'$.${request.params.type}' >= ? AND metadata->'$.${request.params.
 });
 
 //vill ha en till sök som samlar all metadata ej olika delar dvs 'All Info' (ish)
+
+
+
+// PDF search
+
+app.get('/api/pdfs/:search', async (request, response) => {
+    // Make a database query and remember the result
+    let result = await query(`
+      SELECT *
+      FROM mainTable
+      WHERE filetype = '.pdf'  
+      AND LOWER(CONCAT(metadata->'$.info.Creator', ' ', metadata->'$.info.Producer')) LIKE LOWER(?)
+    `, ['%' + request.params.search + '%']);
+    // Send a response to the client
+    response.json(result);
+    //console.log("YOU ASKED FOR pdfs", result)
+  });
+  
