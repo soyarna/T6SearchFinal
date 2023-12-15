@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T6 Search Engine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #search-form {
+            margin-bottom: 30px;
+        }
+
+        #search-results {
+            list-style-type: none;
+            padding: 1;
+        }
+
+        .result-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>T6 Search</h1>
+
+    <form id="search-form">
+        <label for="search-input">Search:</label>
+        <input type="text" id="search-input" name="q" placeholder="Enter your query">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul id="search-results">
+        <!-- Search results will be dynamically added here -->
+    </ul>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            performSearch(document.getElementById('search-input').value);
+        });
+
+        function performSearch(query) {
+            // In a real search engine, you would make an API request here to fetch results.
+            // For simplicity, let's just simulate some results.
+            const results = [
+                'Result 1: Lorem ipsum dolor sit amet.',
+                'Result 2: Consectetur adipiscing elit.',
+                'Result 3: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            ];
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+
+            results.forEach(result => {
+                const listItem = document.createElement('li');
+                listItem.className = 'result-item';
+                listItem.textContent = result;
+                resultsContainer.appendChild(listItem);
+            });
+        }
+    </script>
+
+</body>
+</html>

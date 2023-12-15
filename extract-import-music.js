@@ -18,12 +18,12 @@ async function query(sql, listOfValues) {
   return result[0];
 }
 
-const files = await fs.readdirSync('music');
+const files = await fs.readdirSync('./client/music');
 
 for (let file of files) {
 
 
-  let metadata = await musicMetadata.parseFile('./music/' + file);
+  let metadata = await musicMetadata.parseFile('./client/music/' + file);
 
   let result = await query(`
     INSERT INTO mainTable (fileType, fileName, metadata)
