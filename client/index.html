@@ -7,10 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>What do you want to search?</h1>
-    <p><a href="music.html">Music</a></p>
-    <p><a href="powerpoint.html">PowerPoints</a></p>
-    <p><a href="pdf.html">PDFs</a></p>
-    <p><a href="pictures.html">Photos</a></p>
+    <h1>Search for ALL documents</h1>
+
+    <form name="searchForm" onsubmit="search(); return false">
+        <input name="term" placeholder="Search term" />
+        <button type="submit">Search</button>
+        <br>
+        <input type="radio" id="all" name="radio" value="All" checked="true">
+        <label for="all">All</label>
+        <input type="radio" id="pdf" name="radio" value="PDF">
+        <label for="pdf">PDF</label>
+        <input type="radio" id="mp3" name="radio" value="MP3">
+        <label for="mp3">MP3</label>
+        <input type="radio" id="jpg" name="radio" value="JPG">
+        <label for="jpg">JPG</label>
+        <input type="radio" id="ppt" name="radio" value="PPT">
+        <label for="ppt">PPT</label>
+        <br>
+    </form>
+
+    <article class="searchResults">
+
+    </article>
+
+    <script src="main.js"></script>
 </body>
+
 </html>

@@ -19,6 +19,7 @@ const app = express();
 
 app.listen(3000, () => console.log("Server running on port 3000"));
 
+app.use(express.static("client"));
 
 //Music search//
 app.get("/music/:search", async (request, response) => {
@@ -102,15 +103,14 @@ AND metadata->'$.${request.params.type}' >= ? AND metadata->'$.${request.params.
 // PDF search
 
 app.get('/api/pdfs/:search', async (request, response) => {
-    // Make a database query and remember the result
-    let result = await query(`
-      SELECT *
-      FROM mainTable
-      WHERE filetype = '.pdf'  
-      AND LOWER(CONCAT(metadata->'$.info.Creator', ' ', metadata->'$.info.Producer')) LIKE LOWER(?)
-    `, ['%' + request.params.search + '%']);
-    // Send a response to the client
-    response.json(result);
-    //console.log("YOU ASKED FOR pdfs", result)
-  });
-  
+  // Make a database query and remember the result
+  let result = await query(`
+    SELECT *
+    FROM mainTable
+    WHERE filetype = '.pdf'
+    AND LOWER(CONCAT(metadata->'$.info.Title', ' ', metadata->'$.info.Creator', ' ', metadata->'$.info.Producer', ' ', metadata->'$.info.Author')) LIKE LOWER(?)
+  `, ['%' + request.params.search + '%']);
+  // Send a response to the client
+  response.json(result);
+  //console.log("YOU ASKED FOR pdfs", result)
+});
