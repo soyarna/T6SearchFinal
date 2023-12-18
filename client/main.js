@@ -4,6 +4,8 @@ async function search() {
   let pathToPowerpointFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\powerpoints";
   let pathToPictureFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pictures";
 
+  let searchTerm = document.forms.searchForm.term.value;
+
   let selectRadio = getSelectedValue();
 
   document.forms.searchForm.term.value = "";
@@ -29,12 +31,12 @@ async function search() {
 
     for (let result of results) {
       html += `
-                        <tr>
-                            <td><a href="file:///${pathToPdfFiles}/${result.fileName}">${result.fileName}</a></td>
-                            <td>${result.metadata.info.Title}</td>
+                    <tr>
+                        <td><a href="file:///${pathToPdfFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td>${result.metadata.info.Title}</td>
                             <td>${result.metadata.info.Author}</td>
                         </tr>
-                    `;
+                `;
     }
 
     html += "</table>";
