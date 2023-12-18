@@ -24,7 +24,7 @@ async function search() {
                 </tr>
             `;
 
-    let pathToFiles = "C:UsersohrazDesktoppdfsearcholgaclientpdfs";
+    let pathToFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pdfs";
 
     for (let result of results) {
       html += `
@@ -54,6 +54,4 @@ function getSelectedValue() {
       return selectedValue;
     }
   }
-
-  console.log("No option selected");
 }
