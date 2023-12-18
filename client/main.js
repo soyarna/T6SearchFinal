@@ -1,5 +1,8 @@
 async function search() {
-  let searchTerm = document.forms.searchForm.term.value;
+  let pathToPdfFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pdfs";
+  let pathToMusicFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\music";
+  let pathToPowerpointFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\powerpoints";
+  let pathToPictureFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pictures";
 
   let selectRadio = getSelectedValue();
 
@@ -24,12 +27,10 @@ async function search() {
                 </tr>
             `;
 
-    let pathToFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pdfs";
-
     for (let result of results) {
       html += `
                         <tr>
-                            <td><a href="file:///${pathToFiles}/${result.fileName}">${result.fileName}</a></td>
+                            <td><a href="file:///${pathToPdfFiles}/${result.fileName}">${result.fileName}</a></td>
                             <td>${result.metadata.info.Title}</td>
                             <td>${result.metadata.info.Author}</td>
                         </tr>
