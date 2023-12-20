@@ -51,9 +51,10 @@ app.get("/music/:search", async (request, response) => {
 
 
 
-//Pictures search// 
+//Pictures search//
+
 //'frågan' utkommenterad då jag vill generalisera söket med type, kolla nedan
-//app.get('/api/pictures/:search', async (request, response) => {   
+//app.get('/api/pictures/:search', async (request, response) => {
 // let result = await query(`
 //SELECT *
 //FROM mainTable
@@ -68,35 +69,36 @@ app.get("/music/:search", async (request, response) => {
 
 
 //allmän sök för olika delar(typer) av metadata
+
 app.get('/api/pictures/:type/:search', async (request, response) => {
   let result = await query(`
 SELECT *
 FROM mainTable
 WHERE fileType = '.jpg'  
-AND metadata->'$.${request.params.type}' LIKE ?
+AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER(?)
 `, ['%' + request.params.search + '%']);
-  // Send a response to the client
+  // response
   response.json(result);
-  console.log("search", request.params.search)
-  console.log("type", request.params.type)
+  //console.log("search", request.params.search)
+  //console.log("type", request.params.type)
 });
 
 //sök för min-max range 
+
 app.get('/api/pictures/:type/:min/:max', async (request, response) => {
   let result = await query(`
 SELECT *
 FROM mainTable
 WHERE fileType = '.jpg'  
-AND metadata->'$.${request.params.type}' >= ? AND metadata->'$.${request.params.type}' <= ?
+AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (>= ?) AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (<= ?)
 `, [+request.params.min, +request.params.max])
-  // Send a response to the client
+  // response 
   response.json(result);
-  console.log("min", request.params.min)
-  console.log("max", request.params.max)
-  console.log("type", request.params.type)
+  //console.log("min", request.params.min)
+  //console.log("max", request.params.max)
+  //console.log("type", request.params.type)
 });
 
-//vill ha en till sök som samlar all metadata ej olika delar dvs 'All Info' (ish)
 
 
 
