@@ -93,7 +93,52 @@ async function search() {
 
     searchResultsElement.innerHTML = html;
   }
+
+
+
+  if (selectRadio == "PPT") {
+    let rawData = await fetch("/api/powerpoints/" + searchTerm);
+
+    let results = await rawData.json();
+
+    let html = `
+            <p>You searched for "${searchTerm}"...</p>
+            <p>Found ${results.length} results.</p>
+            `;
+
+    html += `
+            <table>
+                <tr>
+                    <th>Filename</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>File size</th>
+                    <th>Slide count</th>
+                    <th>Creation date</th>
+                </tr>
+            `;
+
+    for (let result of results) {
+      html += `
+                    <tr>
+                        <td><a href="file:///${pathToPowerPointFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td>${result.metadata.title}</td>
+                            <td>${result.metadata.company}</td>
+                            <td>${result.metadata.file_size}</td>
+                            <td>${result.metadata.slide_count}</td>
+                            <td>${result.metadata.creation_date}</td>
+                        </tr>
+                `;
+    }
+
+    html += "</table>";
+
+    let searchResultsElement = document.querySelector(".searchResults");
+
+    searchResultsElement.innerHTML = html;
+  }
 }
+
 
 
 function getSelectedValue() {
