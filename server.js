@@ -116,3 +116,19 @@ app.get('/api/pdfs/:search', async (request, response) => {
   response.json(result);
   //console.log("YOU ASKED FOR pdfs", result)
 });
+
+
+// PPT search
+
+app.get('/api/ppts/:search', async (request, response) => {
+  // Make a database query and remember the result
+  let result = await query(`
+    SELECT *
+    FROM mainTable
+    WHERE filetype = '.ppt'
+    AND LOWER(CONCAT(metadata->'$.title', ' ', metadata->'$.company', ' ', metadata->'$.file_size', ' ', metadata->'$.slide_count',' ', metadata->'$.creation_date)) LIKE LOWER(?)
+  `, ['%' + request.params.search + '%']);
+  // Send a response to the client
+  response.json(result);
+  console.log("search", request.params.search)
+});
