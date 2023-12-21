@@ -1,8 +1,8 @@
 async function search() {
-  let pathToPdfFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pdfs";
-  let pathToMusicFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\music";
-  let pathToPowerpointFiles = "C:\Users\amalk\OneDrive\Radna površina\T6SearchFinal\client\\powerpoints";
-  let pathToPictureFiles = "C:\Users\amalk\OneDrive\Radna površina\T6SearchFinal\\client\\pictures";
+  let pathToPdfFiles = "/pdfs";
+  let pathToMusicFiles = "/music";
+  let pathToPowerpointFiles = "/powerpoints";
+  let pathToPictureFiles = "/pictures";
 
   let searchTerm = document.forms.searchForm.term.value;
 
@@ -32,7 +32,7 @@ async function search() {
     for (let result of results) {
       html += `
                     <tr>
-                        <td><a href="file:///${pathToPdfFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td><a href="${pathToPdfFiles}/${result.fileName}">${result.fileName}</a></td>
                         <td>${result.metadata.info.Title}</td>
                             <td>${result.metadata.info.Author}</td>
                         </tr>
@@ -76,7 +76,7 @@ async function search() {
     for (let result of results) {
       html += `
                     <tr>
-                        <td><a href="file:///${pathToPictureFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td><a href="https://maps.google.com/?q=${result.metadata.latitude},${result.metadata.longitude}" target="_blank"><img class="imageInList" src="${pathToPictureFiles}/${result.fileName}"></a></td>
                         <td>${result.metadata.Make}</td>
                             <td>${result.metadata.Flash}</td>
                             <td>${result.metadata.Contrast}</td>
@@ -120,7 +120,7 @@ async function search() {
     for (let result of results) {
       html += `
                     <tr>
-                        <td><a href="file:///${pathToPowerpointFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td><a href="${pathToPowerpointFiles}/${result.fileName}">${result.fileName}</a></td>
                         <td>${result.metadata.title}</td>
                             <td>${result.metadata.company}</td>
                             <td>${result.metadata.file_size}</td>
@@ -193,3 +193,4 @@ function getSelectedValue() {
     }
   }
 }
+

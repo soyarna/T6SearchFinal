@@ -2,11 +2,10 @@
   "name": "grupp6-pictures",
   "type": "module",
   "version": "1.0.0",
-  "description": "Tänk på att köra npm install när du precis har klonat det här repositoriet eller om någon i teamet säger åt dig att de har installerat en ny modul. - KLART HOS ALLA",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
