@@ -137,6 +137,50 @@ async function search() {
   }
 }
 
+if (selectRadio == "MP3") {
+  let rawData = await fetch("/api/music/" + searchTerm);
+
+  let results = await rawData.json();
+
+  let html = `
+          <p>You searched for "${searchTerm}"...</p>
+          <p>Found ${results.length} results.</p>
+          `;
+
+  html += `
+          <table>
+              <tr>
+                  <th>Album</th>
+                  <th>Artist</th>
+                  <th>Track</th>
+                  <th>Year</th>
+                  <th>Genre</th>
+                  <th>Title</th>
+                 
+              </tr>
+          `;
+
+  for (let result of results) {
+    html += `
+                  <tr>
+                  <td><a href="${pathToMusicFiles}/${result.fileName}">${result.fileName}</a></td>
+                      <td>${result.common.album}</td>
+                          <td>${result.common.artist}</td>
+                          <td>${result.common.track}</td>
+                          <td>${result.common.year}</td>
+                          <td>${result.common.genre}</td>
+                          <td>${result.common.title}</td>
+                      </tr>
+              `;
+  }
+
+  html += "</table>";
+
+  let searchResultsElement = document.querySelector(".searchResults");
+
+  searchResultsElement.innerHTML = html;
+}
+
 
 
 function getSelectedValue() {
@@ -150,3 +194,4 @@ function getSelectedValue() {
     }
   }
 }
+

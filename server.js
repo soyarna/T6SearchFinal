@@ -27,7 +27,7 @@ app.get('api/music/:search', async (request, response) => {
   let result = await query(`
       SELECT *
       FROM mainTable
-      WHERE filetype = '.mp3'  -- Get only mp3 files
+      WHERE fileType = '.mp3'  -- Get only mp3 files
       AND LOWER
     (CONCAT(metadata->'$.common.album', 
     ' ', 
@@ -40,8 +40,9 @@ app.get('api/music/:search', async (request, response) => {
     metadata->'$.common.genre',
     ' ',
     metadata->'$.common.title')) 
-    LIKE LOWER('%${request.params.search}%')
-    `);
+    LIKE LOWER(?)
+    `,['%' + request.params.search + '%']);
+    
 
 
   response.json(result);
