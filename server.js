@@ -84,19 +84,19 @@ AND LOWER(CONCAT(metadata->'$.Make', ' ', metadata->'$.Flash', ' ', metadata->'$
 
 //sök för min-max range 
 
-app.get('/api/pictures/:type/:min/:max', async (request, response) => {
-  let result = await query(`
-SELECT *
-FROM mainTable
-WHERE fileType = '.jpg'  
-AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (>= ?) AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (<= ?)
-`, [+request.params.min, +request.params.max])
-  // response 
-  response.json(result);
-  //console.log("min", request.params.min)
-  //console.log("max", request.params.max)
-  //console.log("type", request.params.type)
-});
+//app.get('/api/pictures/:type/:min/:max', async (request, response) => {
+//let result = await query(`
+//SELECT *
+//FROM mainTable
+//WHERE fileType = '.jpg'  
+//AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (>= ?) AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER (<= ?)
+//`, [+request.params.min, +request.params.max])
+// response 
+//response.json(result);
+//console.log("min", request.params.min)
+//console.log("max", request.params.max)
+//console.log("type", request.params.type)
+//});
 
 
 
