@@ -53,35 +53,34 @@ app.get("/music/:search", async (request, response) => {
 
 //Pictures search//
 
-//'frågan' utkommenterad då jag vill generalisera söket med type, kolla nedan
-//app.get('/api/pictures/:search', async (request, response) => {
-// let result = await query(`
-//SELECT *
-//FROM mainTable
-//WHERE fileType = '.jpg'
-//AND metadata->'$.ISO' LIKE ?
-//`, ['%' + request.params.search + '%']);
-// Send a response to the client
-// response.json(result);
-//console.log("search", request.params.search)
-//});
-
-
 
 //allmän sök för olika delar(typer) av metadata
 
-app.get('/api/pictures/:type/:search', async (request, response) => {
+//app.get('/api/pictures/:type/:search', async (request, response) => {
+//let result = await query(`
+//SELECT *
+//FROM mainTable
+//WHERE fileType = '.jpg'  
+//AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER(?)
+//`, ['%' + request.params.search + '%']);
+// response
+//response.json(result);
+//console.log("search", request.params.search)
+//console.log("type", request.params.type)
+//});
+
+app.get('/api/pictures/:search', async (request, response) => {
   let result = await query(`
 SELECT *
 FROM mainTable
 WHERE fileType = '.jpg'  
-AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER(?)
+AND LOWER(CONCAT(metadata->'$.Make', ' ', metadata->'$.Flash', ' ', metadata->'$.Contrast', ' ', metadata->'$.Sharpness', ' ', metadata->'$.FileSource', ' ', metadata->'$.Saturation')) LIKE LOWER(?)
 `, ['%' + request.params.search + '%']);
   // response
   response.json(result);
   //console.log("search", request.params.search)
-  //console.log("type", request.params.type)
 });
+
 
 //sök för min-max range 
 
@@ -120,15 +119,15 @@ app.get('/api/pdfs/:search', async (request, response) => {
 
 // PPT search
 
-app.get('/api/ppts/:search', async (request, response) => {
+app.get('/api/powerpoints/:search', async (request, response) => {
   // Make a database query and remember the result
   let result = await query(`
     SELECT *
     FROM mainTable
-    WHERE filetype = '.ppt'
-    AND LOWER(CONCAT(metadata->'$.title', ' ', metadata->'$.company', ' ', metadata->'$.file_size', ' ', metadata->'$.slide_count',' ', metadata->'$.creation_date)) LIKE LOWER(?)
+    WHERE fileType = '.ppt'
+    AND LOWER(CONCAT(metadata->'$.title', ' ', metadata->'$.company', ' ', metadata->'$.file_size', ' ', metadata->'$.slide_count')) LIKE LOWER(?)
   `, ['%' + request.params.search + '%']);
   // Send a response to the client
   response.json(result);
-  console.log("search", request.params.search)
+  //console.log("search", request.params.search)
 });

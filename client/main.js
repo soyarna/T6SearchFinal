@@ -1,7 +1,7 @@
 async function search() {
   let pathToPdfFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\pdfs";
   let pathToMusicFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\music";
-  let pathToPowerpointFiles = "C:\\Users\\ohraz\\Desktop\\T6SearchFinal\\client\\powerpoints";
+  let pathToPowerpointFiles = "C:\Users\amalk\OneDrive\Radna površina\T6SearchFinal\client\\powerpoints";
   let pathToPictureFiles = "C:\Users\amalk\OneDrive\Radna površina\T6SearchFinal\\client\\pictures";
 
   let searchTerm = document.forms.searchForm.term.value;
@@ -68,7 +68,7 @@ async function search() {
                     <th>Flash</th>
                     <th>Contrast</th>
                     <th>Sharpness</th>
-                    <th>FileSource</th>
+                    <th>File Source</th>
                     <th>Saturation</th> 
                 </tr>
             `;
@@ -114,19 +114,17 @@ async function search() {
                     <th>Company</th>
                     <th>File size</th>
                     <th>Slide count</th>
-                    <th>Creation date</th>
                 </tr>
             `;
 
     for (let result of results) {
       html += `
                     <tr>
-                        <td><a href="file:///${pathToPowerPointFiles}/${result.fileName}">${result.fileName}</a></td>
+                        <td><a href="file:///${pathToPowerpointFiles}/${result.fileName}">${result.fileName}</a></td>
                         <td>${result.metadata.title}</td>
                             <td>${result.metadata.company}</td>
                             <td>${result.metadata.file_size}</td>
                             <td>${result.metadata.slide_count}</td>
-                            <td>${result.metadata.creation_date}</td>
                         </tr>
                 `;
     }
