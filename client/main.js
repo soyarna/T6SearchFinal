@@ -135,7 +135,7 @@ async function search() {
 
     searchResultsElement.innerHTML = html;
   }
-}
+
 
 if (selectRadio == "MP3") {
   let rawData = await fetch("/api/music/" + searchTerm);
@@ -180,7 +180,7 @@ if (selectRadio == "MP3") {
 
   searchResultsElement.innerHTML = html;
 }
-
+}
 
 
 function getSelectedValue() {
