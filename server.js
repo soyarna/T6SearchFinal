@@ -109,7 +109,7 @@ app.get('/api/pdfs/:search', async (request, response) => {
     SELECT *
     FROM mainTable
     WHERE filetype = '.pdf'
-    AND LOWER(CONCAT(metadata->'$.info.Title', ' ', metadata->'$.info.Creator', ' ', metadata->'$.info.Producer', ' ', metadata->'$.info.Author')) LIKE LOWER(?)
+    AND LOWER(CONCAT(fileName, ' ', metadata->'$.info.Title', ' ', metadata->'$.info.Creator', ' ', metadata->'$.info.Producer', ' ', metadata->'$.info.Author')) LIKE LOWER(?)
   `, ['%' + request.params.search + '%']);
   // Send a response to the client
   response.json(result);
