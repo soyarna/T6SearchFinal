@@ -22,7 +22,7 @@ app.listen(3000, () => console.log("Server running on port 3000"));
 app.use(express.static("client"));
 
 //Music search//
-app.get('api/music/:search', async (request, response) => {
+app.get('/api/music/:search', async (request, response) => {
 
   let result = await query(`
       SELECT *
