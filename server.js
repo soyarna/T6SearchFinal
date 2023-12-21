@@ -22,7 +22,7 @@ app.listen(3000, () => console.log("Server running on port 3000"));
 app.use(express.static("client"));
 
 //Music search//
-app.get("/music/:search", async (request, response) => {
+app.get('api/music/:search', async (request, response) => {
 
   let result = await query(`
       SELECT *
@@ -37,9 +37,9 @@ app.get("/music/:search", async (request, response) => {
     ' ',
     metadata->'$.common.year', 
     ' ',
-    metadata->'$.common.duration',
+    metadata->'$.common.genre',
     ' ',
-    metadata->'$.common.URL')) 
+    metadata->'$.common.title')) 
     LIKE LOWER('%${request.params.search}%')
     `);
 
