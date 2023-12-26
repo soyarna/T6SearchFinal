@@ -1,25 +1,36 @@
 h1 {
-    color: green;
+    color: rgb(47, 147, 229);
 }
 
 body {
+    background: url("/cover.png"), url("/face.png");
     background-color: antiquewhite;
-    background-image: url('/filesearcht6.jpg');
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-size: 40%, 27%;
+    background-repeat: no-repeat, no-repeat;
+    background-position:
+        left top,
+        right top;
+    background-attachment: scroll, scroll;
 
-}
+    .searchInterface,
+    .searchResults {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    height: 70px;
-}
+    table,
+    th,
+    td {
+        border: 1px solid rgb(5, 5, 70);
+        border-collapse: collapse;
+        height: 70px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
-.imageInList {
-    width: 250px;
+    .imageInList {
+        width: 250px;
+    }
 }

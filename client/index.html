@@ -5,24 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search: Start</title>
-    <link rel="stylesheet" href="style.css">
-    <!--<style>
-        body {
-            background-image: url('filesearcht6.jpg');
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-        }
-    </style>-->
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-    <h1>Search for ALL documents</h1>
+  <body>
+    <div class="searchInterface">
+      <h1>Metadata-sökmotorn. Grupp 6</h1>
 
-    <form name="searchForm" onsubmit="search(); return false">
+      <form name="searchForm" onsubmit="search(); return false">
         <input name="term" placeholder="Search term" />
         <button type="submit">Search</button>
-        <br>
+        <br />
+        <br />
         <input type="radio" id="pdf" name="radio" value="PDF">
         <label for="pdf">PDF</label>
         <input type="radio" id="mp3" name="radio" value="MP3">
@@ -31,16 +25,12 @@
         <label for="jpg">JPG</label>
         <input type="radio" id="ppt" name="radio" value="PPT">
         <label for="ppt">PPT</label>
-        <br>
-    </form>
+        <br />
+      </form>
+    </div>
 
-    <article class="searchResults">
-
-    vad vill vi skriva här?
-
-    </article>
+    <article class="searchResults"></article>
 
     <script src="main.js"></script>
-</body>
-
+  </body>
 </html>
