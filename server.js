@@ -22,12 +22,11 @@ app.listen(3000, () => console.log("Server running on port 3000"));
 app.use(express.static("client"));
 
 //Music search//
-app.get("/music/:search", async (request, response) => {
-
+app.get('/api/music/:search', async (request, response) => {
   let result = await query(`
       SELECT *
       FROM mainTable
-      WHERE filetype = '.mp3'  -- Get only mp3 files
+      WHERE fileType = '.mp3'  -- Get only mp3 files
       AND LOWER
     (CONCAT(metadata->'$.common.album', 
     ' ', 
@@ -37,37 +36,18 @@ app.get("/music/:search", async (request, response) => {
     ' ',
     metadata->'$.common.year', 
     ' ',
-    metadata->'$.common.duration',
-    ' ',
-    metadata->'$.common.URL')) 
-    LIKE LOWER('%${request.params.search}%')
-    `);
+    metadata->'$.common.genre',
+        ' ',
+    metadata->'$.common.title')) 
+    LIKE LOWER(?)
+    `,['%' + request.params.search + '%']);
 
 
   response.json(result);
 
-  //console.log("YOU ASKED FOR MUSIC", result)
+  
 });
 
-
-
-//Pictures search//
-
-
-//allmän sök för olika delar(typer) av metadata
-
-//app.get('/api/pictures/:type/:search', async (request, response) => {
-//let result = await query(`
-//SELECT *
-//FROM mainTable
-//WHERE fileType = '.jpg'  
-//AND LOWER(CONCAT(metadata->'$.${request.params.type}')) LIKE LOWER(?)
-//`, ['%' + request.params.search + '%']);
-// response
-//response.json(result);
-//console.log("search", request.params.search)
-//console.log("type", request.params.type)
-//});
 
 app.get('/api/pictures/:search', async (request, response) => {
   let result = await query(`
