@@ -20,11 +20,14 @@ Länkar till Trello bord:
 https://trello.com/b/bSA4htMn/team-6-user-stories
 https://trello.com/b/X2NUcwp1/team-6-deliverables-fran-thomas
 
+Vi har skickat invite för Trello till thomas@nodehill.com.
+
 Länken till Miro bord: 
 
-https://miro.com/app/board/uXjVMgA1P9Y=/
+https://miro.com/app/board/uXjVMgA1P9Y=/ 
 
-Miro kommer nog inte fungera utan invite därför skickar vi inbjudan till miro bord till thomas.frank@tucsweden.se. Om det inte funkar kan du bortse från den.
+vi har skickat invite till Miro till thomas.frank@tucsweden.se och thomas@nodehill.com. 
+
 
 Usernames på alla på GitHub:
 
