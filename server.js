@@ -22,36 +22,65 @@ app.listen(3000, () => console.log("Server running on port 3000"));
 app.use(express.static("client"));
 
 //Music search//
-app.get('/api/music/:search', async (request, response) => {
-  let artistCheckbox = document.getElementById("artist");
-  if (artistCheckbox.checked) {
+//app.get('/api/music/:search', async (request, response) => {
+//let artistCheckbox = document.getElementById("artist");
+//if (artistCheckbox.checked) {
 
-  }
-  let result = await query(`
+//}
+//let result = await query(`
+//  SELECT *
+//FROM mainTable
+//WHERE fileType = '.mp3'  -- Get only mp3 files
+//AND LOWER
+//(CONCAT(metadata->'$.common.album', 
+// ' ', 
+//metadata->'$.common.artist', 
+//' ',
+//metadata->'$.common.track', 
+//' ',
+//metadata->'$.common.year', 
+//' ',
+//metadata->'$.common.genre',
+//   ' ',
+//metadata->'$.common.title')) 
+//LIKE LOWER(?)
+//`, ['%' + request.params.search + '%']);
+
+
+//response.json(result);
+
+
+//});
+
+app.get('/api/music/:searchTerm/:MP3searchType', async (request, response) => {
+  let searchTerm = request.params.searchTerm;
+
+  let MP3searchType = request.params.MP3searchType;
+
+
+  let sql = `
+   SELECT * 
+   FROM mainTable
+   WHERE fileType = '.mp3' AND LOWER(metadata -> '$.common.${MP3searchType}') LIKE LOWER (?)
+  `;
+
+
+  if (MP3searchType == 'all') {
+    sql = `
       SELECT *
       FROM mainTable
-      WHERE fileType = '.mp3'  -- Get only mp3 files
-      AND LOWER
-    (CONCAT(metadata->'$.common.album', 
-    ' ', 
-    metadata->'$.common.artist', 
-    ' ',
-    metadata->'$.common.track', 
-    ' ',
-    metadata->'$.common.year', 
-    ' ',
-    metadata->'$.common.genre',
-        ' ',
-    metadata->'$.common.title')) 
-    LIKE LOWER(?)
-    `,['%' + request.params.search + '%']);
+      WHERE fileType = '.mp3' AND LOWER(metadata) LIKE LOWER (?)
+    `;
+  }
 
+  let result = await query(sql, ['%' + searchTerm + '%']);
 
   response.json(result);
+})
 
-  
-});
 
+
+// Picture search
 
 app.get('/api/pictures/:search', async (request, response) => {
   let result = await query(`
@@ -108,7 +137,7 @@ app.get('/api/pdfs/:search', async (request, response) => {
 // PPT search
 
 app.get('/api/powerpoints/:search', async (request, response) => {
-  // Make a database query and remember the result
+
   let result = await query(`
     SELECT *
     FROM mainTable

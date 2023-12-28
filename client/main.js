@@ -138,8 +138,8 @@ async function search() {
 
 
   if (selectRadio == "MP3") {
-    let searchType = document.forms.searchForm.MP3searchType.value;
-    let rawData = await fetch("/api/music/" + searchTerm + '/' + searchType);
+    let MP3searchType = document.forms.searchForm.MP3searchType.value;
+    let rawData = await fetch("/api/music/" + searchTerm + '/' + MP3searchType);
 
     let results = await rawData.json();
 
@@ -162,7 +162,7 @@ async function search() {
             `;
 
     for (let result of results) {
-  
+
       html += `
                     <tr>
                     <td><audio controls src="${pathToMusicFiles}/${result.fileName}"></td>
