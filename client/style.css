@@ -11,30 +11,32 @@ body {
         left top,
         right top;
     background-attachment: scroll, scroll;
-
-    .searchInterface,
-    .searchResults {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    table,
-    th,
-    td {
-        border: 1px solid rgb(5, 5, 70);
-        border-collapse: collapse;
-        height: 70px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .imageInList {
-        width: 250px;
-    }
-
-    #hiddenCheckboxes {
-        display: none;
-    }
 }
+
+
+.searchInterface,
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid rgb(5, 5, 70);
+    border-collapse: collapse;
+    height: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.imageInList {
+    width: 250px;
+}
+
+#hiddenCheckboxes {
+    display: none;
+}
+

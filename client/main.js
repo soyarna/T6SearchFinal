@@ -138,7 +138,8 @@ async function search() {
 
 
   if (selectRadio == "MP3") {
-    let rawData = await fetch("/api/music/" + searchTerm);
+    let searchType = document.forms.searchForm.MP3searchType.value;
+    let rawData = await fetch("/api/music/" + searchTerm + '/' + searchType);
 
     let results = await rawData.json();
 
@@ -186,7 +187,7 @@ async function search() {
 function getSelectedValue() {
   var selectedType = document.getElementsByName("radio");
 
-  for (var i = 0; i < selectedType.length; i++) {
+  for (let i = 0; i < selectedType.length; i++) {
     if (selectedType[i].checked) {
       var selectedValue = selectedType[i].value;
       console.log("Selected value: " + selectedValue);
@@ -196,8 +197,7 @@ function getSelectedValue() {
 }
 
 function toggleHiddenCheckboxes() {
-  var hiddenCheckboxes = document.getElementById("hiddenCheckboxes");
-
+  let hiddenCheckboxes = document.getElementById("hiddenCheckboxes");
   if (document.getElementById("mp3").checked) {
     hiddenCheckboxes.style.display = "block";
   } else if (document.getElementById("mp3").checked) {
