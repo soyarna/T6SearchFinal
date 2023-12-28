@@ -195,3 +195,14 @@ function getSelectedValue() {
   }
 }
 
+function toggleHiddenCheckboxes() {
+  var hiddenCheckboxes = document.getElementById("hiddenCheckboxes");
+
+  if (document.getElementById("mp3").checked) {
+    hiddenCheckboxes.style.display = "block";
+  } else if (document.getElementById("mp3").checked) {
+    hiddenCheckboxes.style.display = "none";
+  } else {
+    hiddenCheckboxes.style.display = "none";
+  }
+}

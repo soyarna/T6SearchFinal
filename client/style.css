@@ -33,4 +33,8 @@ body {
     .imageInList {
         width: 250px;
     }
+
+    #hiddenCheckboxes {
+        display: none;
+    }
 }

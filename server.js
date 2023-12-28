@@ -23,6 +23,10 @@ app.use(express.static("client"));
 
 //Music search//
 app.get('/api/music/:search', async (request, response) => {
+  let artistCheckbox = document.getElementById("artist");
+  if (artistCheckbox.checked) {
+
+  }
   let result = await query(`
       SELECT *
       FROM mainTable

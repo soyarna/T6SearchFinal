@@ -17,15 +17,24 @@
         <button type="submit">Search</button>
         <br />
         <br />
-        <input type="radio" id="pdf" name="radio" value="PDF">
+        <input type="radio" id="pdf" name="radio" value="PDF" />
         <label for="pdf">PDF</label>
-        <input type="radio" id="mp3" name="radio" value="MP3">
+        <input type="radio" id="mp3" name="radio" value="MP3" onchange="toggleHiddenCheckboxes();" />
         <label for="mp3">MP3</label>
-        <input type="radio" id="jpg" name="radio" value="JPG">
+        <input type="radio" id="jpg" name="radio" value="JPG" />
         <label for="jpg">JPG</label>
-        <input type="radio" id="ppt" name="radio" value="PPT">
+        <input type="radio" id="ppt" name="radio" value="PPT" />
         <label for="ppt">PPT</label>
         <br />
+        <br />
+        <div id="hiddenCheckboxes">
+          <label>
+            <input type="checkbox" id="artist" name="Artist" />
+            <label for="artist">Artist</label>
+            <input type="checkbox" id="album" name="Album" />
+            <label for="album">Album</label>
+          </label>
+        </div>
       </form>
     </div>
 
