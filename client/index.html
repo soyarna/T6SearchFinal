@@ -2,44 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search: Start</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search: Start</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-    <div class="searchInterface">
-      <h1>Metadata-sökmotorn. Grupp 6</h1>
+<body>
+  <div class="searchInterface">
+    <h1>Search by file type for metadata</h1>
 
       <form name="searchForm" onsubmit="search(); return false">
         <input name="term" placeholder="Search term" />
         <button type="submit">Search</button>
         <br />
         <br />
-        <input type="radio" id="pdf" name="radio" value="PDF" />
+        <input type="radio" id="pdf" name="radio" value="PDF">
         <label for="pdf">PDF</label>
-        <input type="radio" id="mp3" name="radio" value="MP3" onchange="toggleHiddenCheckboxes();" />
+        <input type="radio" id="mp3" name="radio" value="MP3">
         <label for="mp3">MP3</label>
-        <input type="radio" id="jpg" name="radio" value="JPG" />
+        <input type="radio" id="jpg" name="radio" value="JPG">
         <label for="jpg">JPG</label>
-        <input type="radio" id="ppt" name="radio" value="PPT" />
+        <input type="radio" id="ppt" name="radio" value="PPT">
         <label for="ppt">PPT</label>
         <br />
-        <br />
-        <div id="hiddenCheckboxes">
-          <label>
-            <input type="checkbox" id="artist" name="Artist" />
-            <label for="artist">Artist</label>
-            <input type="checkbox" id="album" name="Album" />
-            <label for="album">Album</label>
-          </label>
-        </div>
       </form>
     </div>
 
-    <article class="searchResults"></article>
+  <article class="searchResults"></article>
 
-    <script src="main.js"></script>
-  </body>
+  <script src="main.js"></script>
+</body>
+
 </html>
