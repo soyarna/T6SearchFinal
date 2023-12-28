@@ -15,10 +15,16 @@ Hela powerpoint delen extraherade och importerade vi till DB tillsammans och fil
 
 Filter söket för music-mp3 gjorde vi tillsammans dock skickades det upp på GitHub från två olika personer.
 
-Länken till Trello borden:
+Länkar till Trello bord:
 
 https://trello.com/b/bSA4htMn/team-6-user-stories
 https://trello.com/b/X2NUcwp1/team-6-deliverables-fran-thomas
+
+Länken till Miro bord: 
+
+https://miro.com/app/board/uXjVMgA1P9Y=/
+
+Miro kommer nog inte fungera utan invite därför skickar vi inbjudan till miro bord till thomas.frank@tucsweden.se. Om det inte funkar kan du bortse från den.
 
 Usernames på alla på GitHub:
 
